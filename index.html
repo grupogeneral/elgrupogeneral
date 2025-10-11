@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minimalist Symmetrical Website</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      background-color: #fff;
+      color: #000;
+    }
+
+    /* Header Layout */
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    /* Logo Image */
+    .logo {
+      width: 250px; /* Adjust to your preference */
+      height: auto;
+      display: block;
+      margin: 0 auto 20px auto;
+      object-fit: contain;
+    }
+
+    /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: center;
+      width: fit-content;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #000;
+    }
+
+    nav li {
+      border-right: 2px solid #000;
+    }
+
+    nav li:last-child {
+      border-right: none;
+    }
+
+    nav a {
+      display: block;
+      padding: 10px 40px;
+      font-weight: bold;
+      color: #000;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      background-color: #e82127;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    /* Main Content */
+    main {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .content {
+      max-width: 600px;
+    }
+
+    .content h1 {
+      margin-bottom: 15px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        border: none;
+      }
+
+      nav li {
+        border: 2px solid #000;
+        border-bottom: none;
+      }
+
+      nav li:last-child {
+        border-bottom: 2px solid #000;
+      }
+
+      nav a {
+        padding: 15px 0;
+      }
+
+      .logo {
+        width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Company Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="#">news</a></li>
+        <li><a href="#">services</a></li>
+        <li><a href="#">about us</a></li>
+        <li><a href="#">contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="content">
+      <h1>Welcome to Our Minimalist Site</h1>
+      <p>This layout stays perfectly centered and symmetrical, no matter your screen size or logo dimensions.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Your Company. All rights reserved.</p>
+  </footer>
+</body>
+</html>
