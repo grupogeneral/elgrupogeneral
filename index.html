@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Minimalist Symmetrical Website</title>
+  <title>Sitio Minimalista Simétrico</title>
   <style>
     /* Reset and Base Styles */
     * {
@@ -33,7 +33,7 @@
 
     /* Logo Image */
     .logo {
-      width: 250px; /* Adjust to your preference */
+      width: 250px;
       height: auto;
       display: block;
       margin: 0 auto 20px auto;
@@ -84,6 +84,7 @@
       align-items: center;
       justify-content: center;
       padding: 40px;
+      width: 100%;
     }
 
     .content {
@@ -94,6 +95,54 @@
       margin-bottom: 15px;
     }
 
+    /* Application Form */
+    #aplicar-form {
+      display: none;
+      max-width: 500px;
+      width: 90%;
+      background: #f9f9f9;
+      border: 2px solid #000;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: left;
+    }
+
+    #aplicar-form h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    form label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    form input, form textarea, form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #000;
+      border-radius: 5px;
+    }
+
+    form button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 10px;
+      background-color: #e82127;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    form button:hover {
+      background-color: #c91c22;
+    }
+
     /* Footer */
     footer {
       padding: 20px;
@@ -102,15 +151,35 @@
     }
 
     /* Responsive Design */
+    @media (max-width: 900px) {
+      nav ul {
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        padding: 10px 25px;
+      }
+
+      .logo {
+        width: 180px;
+      }
+
+      main {
+        padding: 20px;
+      }
+    }
+
     @media (max-width: 600px) {
       nav ul {
         flex-direction: column;
         border: none;
+        width: 100%;
       }
 
       nav li {
         border: 2px solid #000;
         border-bottom: none;
+        width: 100%;
       }
 
       nav li:last-child {
@@ -124,31 +193,90 @@
       .logo {
         width: 120px;
       }
+
+      #aplicar-form {
+        padding: 15px;
+        font-size: 0.95rem;
+      }
+
+      form input, form textarea, form select {
+        font-size: 1rem;
+      }
+
+      form button {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Company Logo" class="logo">
+    <img src="logo.png" alt="Logo de la Compañía" class="logo">
     <nav>
       <ul>
-        <li><a href="#">news</a></li>
-        <li><a href="#">services</a></li>
-        <li><a href="#">about us</a></li>
-        <li><a href="#">contact</a></li>
+        <li><a href="#" onclick="showSection('inicio')">noticias</a></li>
+        <li><a href="#" onclick="showSection('servicios')">servicios</a></li>
+        <li><a href="#" onclick="showSection('nosotros')">sobre nosotros</a></li>
+        <li><a href="#" onclick="showSection('aplicar')">aplicar</a></li>
+        <li><a href="#" onclick="showSection('contacto')">contacto</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="content">
-      <h1>Welcome to Our Minimalist Site</h1>
-      <p>This layout stays perfectly centered and symmetrical, no matter your screen size or logo dimensions.</p>
+    <section class="content" id="inicio">
+      <h1>Bienvenido a Nuestro Sitio Minimalista</h1>
+      <p>Este diseño se mantiene perfectamente centrado y simétrico sin importar el tamaño de pantalla o el logotipo.</p>
+    </section>
+
+    <section id="aplicar-form">
+      <h2>Formulario de Aplicación</h2>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <label for="name">Nombre Completo</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="residence">Residencia</label>
+        <input type="text" id="residence" name="residence" required>
+
+        <label for="income">Nivel de Ingreso</label>
+        <select id="income" name="income" required>
+          <option value="">Seleccione</option>
+          <option value="bajo">Bajo</option>
+          <option value="medio">Medio</option>
+          <option value="alto">Alto</option>
+        </select>
+
+        <label for="necessities">Necesidades</label>
+        <textarea id="necessities" name="necessities" rows="3" required></textarea>
+
+        <label for="family">Tamaño de Familia</label>
+        <input type="number" id="family" name="family" min="1" required>
+
+        <label for="phone">Número de Teléfono</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <button type="submit">Enviar Aplicación</button>
+      </form>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Your Company. All rights reserved.</p>
+    <p>© 2025 Tu Compañía. Todos los derechos reservados.</p>
   </footer>
+
+  <script>
+    function showSection(section) {
+      const content = document.querySelector('.content');
+      const form = document.getElementById('aplicar-form');
+
+      if (section === 'aplicar') {
+        content.style.display = 'none';
+        form.style.display = 'block';
+      } else {
+        content.style.display = 'block';
+        form.style.display = 'none';
+      }
+    }
+  </script>
 </body>
 </html>
