@@ -118,7 +118,9 @@
       font-weight: bold;
     }
 
-    form input, form textarea, form select {
+    form input,
+    form textarea,
+    form select {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
@@ -141,6 +143,19 @@
 
     form button:hover {
       background-color: #c91c22;
+    }
+
+    /* Confirmation Message */
+    #success-message {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      font-size: 1.1rem;
+      color: #0a0a0a;
+      background: #e6ffe6;
+      border: 2px solid #0a0;
+      border-radius: 10px;
+      margin-top: 20px;
     }
 
     /* Footer */
@@ -199,7 +214,9 @@
         font-size: 0.95rem;
       }
 
-      form input, form textarea, form select {
+      form input,
+      form textarea,
+      form select {
         font-size: 1rem;
       }
 
@@ -231,7 +248,7 @@
 
     <section id="aplicar-form">
       <h2>Formulario de Aplicación</h2>
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form id="formulario-aplicar" action="https://formspree.io/f/xgvnpold" method="POST">
         <label for="name">Nombre Completo</label>
         <input type="text" id="name" name="name" required>
 
@@ -257,6 +274,10 @@
 
         <button type="submit">Enviar Aplicación</button>
       </form>
+
+      <div id="success-message">
+        <p>✅ ¡Gracias por aplicar! Hemos recibido tu información correctamente.</p>
+      </div>
     </section>
   </main>
 
@@ -268,15 +289,36 @@
     function showSection(section) {
       const content = document.querySelector('.content');
       const form = document.getElementById('aplicar-form');
+      const successMsg = document.getElementById('success-message');
 
       if (section === 'aplicar') {
         content.style.display = 'none';
         form.style.display = 'block';
+        successMsg.style.display = 'none';
       } else {
         content.style.display = 'block';
         form.style.display = 'none';
       }
     }
+
+    // Formspree submission handler
+    const form = document.getElementById('formulario-aplicar');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { Accept: 'application/json' }
+      });
+
+      if (response.ok) {
+        form.reset();
+        document.getElementById('success-message').style.display = 'block';
+      } else {
+        alert('Hubo un problema al enviar tu aplicación. Inténtalo de nuevo.');
+      }
+    });
   </script>
 </body>
 </html>
