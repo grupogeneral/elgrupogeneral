@@ -23,7 +23,6 @@
       color: #000;
     }
 
-    /* Header Layout */
     header {
       display: flex;
       flex-direction: column;
@@ -31,7 +30,6 @@
       margin-top: 40px;
     }
 
-    /* Logo Image */
     .logo {
       width: 250px;
       height: auto;
@@ -40,7 +38,6 @@
       object-fit: contain;
     }
 
-    /* Navigation Bar */
     nav {
       display: flex;
       justify-content: center;
@@ -77,7 +74,6 @@
       transition: 0.3s;
     }
 
-    /* Main Content */
     main {
       flex-grow: 1;
       display: flex;
@@ -90,13 +86,20 @@
 
     .content {
       max-width: 600px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      display: none;
+    }
+
+    .content.show {
+      display: block;
+      opacity: 1;
     }
 
     .content h1 {
       margin-bottom: 15px;
     }
 
-    /* Servicios Section */
     .services-container {
       display: flex;
       justify-content: space-between;
@@ -126,21 +129,8 @@
       transform: scale(1.05);
     }
 
-    /* Application Form */
-    #aplicar-form {
-      display: none;
-      max-width: 500px;
-      width: 90%;
-      background: #f9f9f9;
-      border: 2px solid #000;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: left;
-    }
-
-    #aplicar-form h2 {
-      text-align: center;
-      margin-bottom: 15px;
+    form {
+      width: 100%;
     }
 
     form label {
@@ -176,8 +166,30 @@
       background-color: #c91c22;
     }
 
-    /* Confirmation Message */
-    #success-message {
+    .form-container {
+      max-width: 500px;
+      width: 90%;
+      background: #f9f9f9;
+      border: 2px solid #000;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: left;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      display: none;
+    }
+
+    .form-container.show {
+      display: block;
+      opacity: 1;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .success-message {
       display: none;
       text-align: center;
       padding: 20px;
@@ -189,81 +201,27 @@
       margin-top: 20px;
     }
 
-    /* Footer */
     footer {
       padding: 20px;
       font-size: 0.9rem;
       color: #666;
     }
 
-    /* Responsive Design */
     @media (max-width: 900px) {
-      nav ul {
-        flex-wrap: wrap;
-      }
-
-      nav a {
-        padding: 10px 25px;
-      }
-
-      .logo {
-        width: 180px;
-      }
-
-      main {
-        padding: 20px;
-      }
-
-      .service img {
-        max-width: 200px;
-      }
+      nav ul { flex-wrap: wrap; }
+      nav a { padding: 10px 25px; }
+      .logo { width: 180px; }
+      main { padding: 20px; }
+      .service img { max-width: 200px; }
     }
 
     @media (max-width: 600px) {
-      nav ul {
-        flex-direction: column;
-        border: none;
-        width: 100%;
-      }
-
-      nav li {
-        border: 2px solid #000;
-        border-bottom: none;
-        width: 100%;
-      }
-
-      nav li:last-child {
-        border-bottom: 2px solid #000;
-      }
-
-      nav a {
-        padding: 15px 0;
-      }
-
-      .logo {
-        width: 120px;
-      }
-
-      #aplicar-form {
-        padding: 15px;
-        font-size: 0.95rem;
-      }
-
-      form input,
-      form textarea,
-      form select {
-        font-size: 1rem;
-      }
-
-      form button {
-        font-size: 1rem;
-      }
-
-      .services-container {
-        flex-direction: column;
-        gap: 20px;
-        align-items: center;
-      }
+      nav ul { flex-direction: column; border: none; width: 100%; }
+      nav li { border: 2px solid #000; border-bottom: none; width: 100%; }
+      nav li:last-child { border-bottom: 2px solid #000; }
+      nav a { padding: 15px 0; }
+      .logo { width: 120px; }
+      .services-container { flex-direction: column; gap: 20px; align-items: center; }
     }
   </style>
 </head>
@@ -282,14 +240,14 @@
   </header>
 
   <main>
-    <!-- Inicio Section -->
-    <section class="content" id="inicio">
+    <!-- Inicio -->
+    <section class="content show" id="inicio">
       <h1>Bienvenido a Nuestro Sitio Minimalista</h1>
       <p>Este diseño se mantiene perfectamente centrado y simétrico sin importar el tamaño de pantalla o el logotipo.</p>
     </section>
 
-    <!-- Servicios Section -->
-    <section class="content" id="servicios" style="display:none;">
+    <!-- Servicios -->
+    <section class="content" id="servicios">
       <h1>Nuestros Servicios</h1>
       <div class="services-container">
         <div class="service">
@@ -301,22 +259,26 @@
           <p>Búsqueda De Empleo.</p>
         </div>
         <div class="service">
-          <img src="servicio3.png" alt="Servicio 3">
-          <p>Asistencia Con Productos Higiénicos.</p>
+          <img src="servicio3.jpg" alt="Servicio 3">
+          <p>Asistencia De Productos Higiénicos.</p>
         </div>
       </div>
     </section>
 
-    <!-- Aplicar Form Section -->
-    <section id="aplicar-form">
+    <!-- Sobre Nosotros -->
+    <section class="content" id="nosotros">
+      <h1>Sobre Nosotros</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel turpis a arcu ultricies lobortis. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+    </section>
+
+    <!-- Aplicar -->
+    <section class="form-container" id="aplicar-form">
       <h2>Formulario de Aplicación</h2>
       <form id="formulario-aplicar" action="https://formspree.io/f/xgvnpold" method="POST">
         <label for="name">Nombre Completo</label>
         <input type="text" id="name" name="name" required>
-
         <label for="residence">Residencia</label>
         <input type="text" id="residence" name="residence" required>
-
         <label for="income">Nivel de Ingreso</label>
         <select id="income" name="income" required>
           <option value="">Seleccione</option>
@@ -324,22 +286,32 @@
           <option value="medio">Medio</option>
           <option value="alto">Alto</option>
         </select>
-
         <label for="necessities">Necesidades</label>
         <textarea id="necessities" name="necessities" rows="3" required></textarea>
-
         <label for="family">Tamaño de Familia</label>
         <input type="number" id="family" name="family" min="1" required>
-
         <label for="phone">Número de Teléfono</label>
         <input type="tel" id="phone" name="phone" required>
-
         <button type="submit">Enviar Aplicación</button>
       </form>
+      <div class="success-message" id="success-aplicar">✅ ¡Gracias por aplicar! Hemos recibido tu información correctamente.</div>
+    </section>
 
-      <div id="success-message">
-        <p>✅ ¡Gracias por aplicar! Hemos recibido tu información correctamente.</p>
-      </div>
+    <!-- Contacto -->
+    <section class="form-container" id="contacto">
+      <h2>Contacto</h2>
+      <form id="formulario-contacto" action="https://formspree.io/f/yourFormID" method="POST">
+        <label for="contact-name">Nombre</label>
+        <input type="text" id="contact-name" name="name" required>
+        <label for="contact-email">Email</label>
+        <input type="email" id="contact-email" name="email" required>
+        <label for="contact-phone">Teléfono</label>
+        <input type="tel" id="contact-phone" name="phone" required>
+        <label for="contact-message">Mensaje</label>
+        <textarea id="contact-message" name="message" rows="4" required></textarea>
+        <button type="submit">Enviar Mensaje</button>
+      </form>
+      <div class="success-message" id="success-contacto">✅ ¡Gracias por contactarnos! Revisaremos tu mensaje pronto.</div>
     </section>
   </main>
 
@@ -349,39 +321,49 @@
 
   <script>
     function showSection(section) {
-      const contentInicio = document.getElementById('inicio');
-      const servicios = document.getElementById('servicios');
-      const form = document.getElementById('aplicar-form');
-      const successMsg = document.getElementById('success-message');
+      const sections = document.querySelectorAll('.content, .form-container');
+      const successMessages = document.querySelectorAll('.success-message');
+      sections.forEach(sec => sec.classList.remove('show'));
+      successMessages.forEach(msg => msg.style.display = 'none');
 
-      // Hide all sections first
-      contentInicio.style.display = 'none';
-      servicios.style.display = 'none';
-      form.style.display = 'none';
-      successMsg.style.display = 'none';
-
-      // Show the selected section
-      if (section === 'inicio') contentInicio.style.display = 'block';
-      else if (section === 'servicios') servicios.style.display = 'block';
-      else if (section === 'aplicar') form.style.display = 'block';
+      if(section === 'inicio') document.getElementById('inicio').classList.add('show');
+      if(section === 'servicios') document.getElementById('servicios').classList.add('show');
+      if(section === 'nosotros') document.getElementById('nosotros').classList.add('show');
+      if(section === 'aplicar') document.getElementById('aplicar-form').classList.add('show');
+      if(section === 'contacto') document.getElementById('contacto').classList.add('show');
     }
 
-    // Formspree submission handler
-    const form = document.getElementById('formulario-aplicar');
-    form.addEventListener('submit', async (event) => {
+    const formAplicar = document.getElementById('formulario-aplicar');
+    formAplicar.addEventListener('submit', async (event) => {
       event.preventDefault();
-      const formData = new FormData(form);
-      const response = await fetch(form.action, {
-        method: form.method,
+      const formData = new FormData(formAplicar);
+      const response = await fetch(formAplicar.action, {
+        method: formAplicar.method,
         body: formData,
         headers: { Accept: 'application/json' }
       });
-
       if (response.ok) {
-        form.reset();
-        document.getElementById('success-message').style.display = 'block';
+        formAplicar.reset();
+        document.getElementById('success-aplicar').style.display = 'block';
       } else {
         alert('Hubo un problema al enviar tu aplicación. Inténtalo de nuevo.');
+      }
+    });
+
+    const formContact = document.getElementById('formulario-contacto');
+    formContact.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData(formContact);
+      const response = await fetch(formContact.action, {
+        method: formContact.method,
+        body: formData,
+        headers: { Accept: 'application/json' }
+      });
+      if (response.ok) {
+        formContact.reset();
+        document.getElementById('success-contacto').style.display = 'block';
+      } else {
+        alert('Hubo un problema al enviar tu mensaje. Inténtalo de nuevo.');
       }
     });
   </script>
